@@ -1,0 +1,11 @@
+[Unit]
+Description=SHELL over SOCK
+
+[Service]
+User=root
+ExecStart=/etc/shell_sock/shell_sock_server.sh
+Restart=always
+RestartSec=5s
+
+[Install]
+WantedBy=multi-user.target

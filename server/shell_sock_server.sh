@@ -96,4 +96,5 @@ echo "..Startging to connect to: $SERVER:$PORT to accept connection 127.0.0.1:$L
 while true ; do 
   socat OPENSSL:$SERVER:$PORT,cafile=$CA_CERT,key=$KEY,cert=$CERT,verify=4 system:'echo $LPORT; /bin/bash',pty,stderr,setsid,echo=0; 
   sleep 5s
+  echo "Will attempt again. Nobody connected to me"
 done
