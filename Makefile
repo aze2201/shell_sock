@@ -1,4 +1,3 @@
-# Load variable definitions from variables.env
 #include variables.env
 
 # Colors
@@ -44,22 +43,45 @@ server:
 	   
 	@echo "${YELLOW}Copying files to /etc/...${NC}"
 	cp -r $(CURR_SHELL_SOCK)/server/config/server.conf $(SERV_CONF_SHELL_SOCK)/
+	cp -r $(CURR_SHELL_SOCK)/server/config/shell_sock_server.service $(SYSTEMD_INIT_PATH)/shell_sock_server.service
 	cp -r $(CURR_SHELL_SOCK)/server/shell_sock_server.sh $(ROOT_SHELL_SOCK)/
-	cp -r $(CURR_SHELL_SOCK)/server/config/shell_sock.service $(SYSTEMD_INIT_PATH)/shell_sock.service
+
 	chmod +x $(ROOT_SHELL_SOCK)/shell_sock_server.sh
 	systemctl daemon-reload
-	systemctl enable shell_sock.service
+	systemctl enable shell_sock_server.service
 	@echo "${YELLOW}Server installation complete.${NC}"
+	
 
 client:
 	@echo "${YELLOW}Installing client...${NC}"
-	mkdir /etc/shell_sock
+	@if ! command -v socat >/dev/null; then \
+		if command -v apt >/dev/null; then \
+			sudo apt-get install socat; \
+		else \
+			sudo yum install socat; \
+		fi; \
+	fi
+	
+	@echo "${YELLOW}Configuring folders...${NC}"
+	[ ! -d $(ROOT_SHELL_SOCK) ] && \
+		(mkdir $(ROOT_SHELL_SOCK) && \
+		mkdir -p $(CLNT_CONF_SHELL_SOCK) && \
+		mkdir -p $(CLNT_CERT_SHELL_SOCK))
+	
+	@echo "${YELLOW}Copying files to /etc/...${NC}"
+	cp -r $(CURR_SHELL_SOCK)/client/config/client.conf $(CLNT_CONF_SHELL_SOCK)/
+	cp -r $(CURR_SHELL_SOCK)/client/config/shell_sock_client.service $(SYSTEMD_INIT_PATH)/shell_sock_client.service
+	cp -r $(CURR_SHELL_SOCK)/client/shell_sock_client.sh $(ROOT_SHELL_SOCK)/
+	chmod +x $(ROOT_SHELL_SOCK)/shell_sock_client.sh
+	systemctl daemon-reload
+	systemctl enable shell_sock_client.service
+	@echo "${YELLOW}Client installation complete.${NC}"
 	
 clean:
 	@echo "${YELLOW}Cleaning up...${NC}"
-	rm -rf $(EXEC_SHELL_SOCK)
 	rm -rf $(ROOT_SHELL_SOCK)
-	rm -rf $(SYSTEMD_INIT_PATH)/shell_sock.service
+	rm -rf $(SYSTEMD_INIT_PATH)/shell_sock_server.service
+	rm -rf $(SYSTEMD_INIT_PATH)/shell_sock_client.service
 	systemctl daemon-reload
 
 help:
@@ -77,4 +99,3 @@ help:
 
 # Default target
 .DEFAULT_GOAL := help
-

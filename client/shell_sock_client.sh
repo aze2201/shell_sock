@@ -2,11 +2,11 @@
 
 
 # read config file if exist
-[ -f /etc/shell_sock/config/*.conf ] &&
+[ -f /etc/shell_sock/client/config/*.conf ] &&
      (  
          echo "Loading configuration"
          set -a
-         source /etc/shell_sock/config/*.conf
+         source /etc/shell_sock/client/config/*.conf
          set +a
          echo "Configurations are loaded"
      )

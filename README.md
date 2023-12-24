@@ -7,3 +7,7 @@ Server:
 
 Client:
 `socat`,`openssl`,`make` (for installation only)
+
+
+Agent:
+`ssh -t root@proxy "nc -l -s 127.0.0.1 -p 4445; pkill -f 'nc -l -s 127.0.0.1 -p 4445'",pty,raw,echo=0`
