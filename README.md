@@ -1,6 +1,6 @@
-## Shell_sock server to connect IoT device pty terminal
+# Shell_sock server to connect IoT device pty terminal
 
-# dependecies
+### dependecies
 Server:
 `nc`,`socat`,`openssl`,`make` (for installation only)
 
