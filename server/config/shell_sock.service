@@ -2,8 +2,10 @@
 Description=SHELL over SOCK
 
 [Service]
+Type=simple
 User=root
 ExecStart=/etc/shell_sock/shell_sock_server.sh
+EnvironmentFile=/etc/shell_sock/server/config/*.conf
 Restart=always
 RestartSec=5s
 

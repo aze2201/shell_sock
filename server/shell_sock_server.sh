@@ -3,13 +3,14 @@
 
 
 # read config file if exist
-[ -f /etc/shell_sock/config/*.conf ] &&
+[ -f /etc/shell_sock/server/config/*.conf ] &&
      (  
          echo "Loading configuration"
          set -a
-         source /etc/shell_sock/config/*.conf
+         source /etc/shell_sock/server/config/*.conf
          set +a
          echo "Configurations are loaded"
+	 printenv
      )
 
 
@@ -91,5 +92,5 @@ socat openssl-listen:$PORT,fork,cert=$CERT,key=$KEY,cafile=$CA_CERT,verify=4 'sy
 	  # proxy TCP traffic to localhost:$port
 	  socat - TCP4:127.0.0.1:$port 
 	fi
-}'  >/dev/null 2>&1
+}' 
 
