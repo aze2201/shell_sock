@@ -47,6 +47,20 @@ PORT=
 systemctl start shell_sock_server
 ```
 
+Or you can export variables in conf file and start sh scrript manually from any directory
+```
+$ export KEY=/etc/shell_sock/server/certs/iot.key
+$ export CERT=/etc/shell_sock/server/certs/iot.crt
+$ export CA_CERT=/etc/shell_sock/server/certs/ca-cert.crt
+$ export PORT=123457
+$ ./shell_sock_client.sh
+```
+
+or
+```
+./shell_sock_server.sh --cert certs/server.crt -k certs/server.key -C certs/ca-ca.crt -p 123457
+```
+
 ### Installing client
 ```
 apt-get install socat make
@@ -85,11 +99,65 @@ PORT=123457
 # Local PORT
 LPORT=4446
 ```
+Help
+```
+./shell_sock_server.sh --help
+Loading configuration
+Configurations are loaded
 
+To share accept terminal PTY requires certificates wich is signed by any CA
+Generate private key: root@shell_sock:~\# openssl genrsa -out certs/server.key 4096
+Generate CSR key:     root@shell_sock:~\# openssl req -new -key certs/server.key -out certs/server.csr
+Send CSR file to CA and obtain signed PEM or CRT file and store certs folder (x509)
+Get CA public key chain
+
+  {-k|--key     }  private key   -- Set prvate key     or   root@shell_sock:~# export KEY=
+  {-c|--cert    }  public key    -- Set public key     or   root@shell_sock:~# export CERT=
+  {-C|--ca-cert }  CA file       -- Set CA public key  or   root@shell_sock:~# export CA_CERT=
+  {-p|--port    }  PORT          -- Set listen port    or   root@shell_sock:~# export PORT=
+
+
+```
   - Start Client
 ```
 systemctl start shell_sock_server
 ```
+
+Or you can export variables in conf file and start sh scrript manually from any directory
+```
+$ export KEY=/etc/shell_sock/client/certs/iot.key
+$ export CERT=/etc/shell_sock/client/certs/iot.crt
+$ export CA_CERT=/etc/shell_sock/client/certs/ca-cert.crt
+$ export SERVER=<domainname>
+$ export PORT=123457
+$ export LPORT=4446
+$ ./shell_sock_client.sh
+```
+
+or
+```
+./shell_sock_client.sh --cert certs/iot.crt -k certs/iot.key -C certs/ca-ca.crt -p 123457 -s <domain> --local-port 4444
+```
+Help
+```
+./shell_sock_client.sh --help
+Loading configuration
+Configurations are loaded
+
+To share terminal to server requires certificates wich is signed by any CA
+Generate private key: root@shell_sock:~\# openssl genrsa -out certs/server.key 4096
+Generate CSR key:     root@shell_sock:~\# openssl req -new -key certs/server.key -out certs/server.csr
+Send CSR file to CA and obtain signed PEM or CRT file and store certs folder (x509)
+Get CA public key chain
+
+  {-k|--key        }  private key  -- Set prvate key       or   root@shell_sock:~# export KEY=
+  {-c|--cert       }  public key   -- Set public key       or   root@shell_sock:~# export CERT=
+  {-C|--ca-cert    }  CA file      -- Set CA public key    or   root@shell_sock:~# export CA_CERT=
+  {-p|--port       }  PORT         -- Set listen port      or   root@shell_sock:~# export PORT=
+  {-s|--server     }  SERVER       -- Set server ip|domain or   root@shell_sock:~# export SERVER=
+  {-l|--local-port }  SERVER       -- Set server ip|domain or   root@shell_sock:~# export LPORT=
+```
+
 
 # Connect to device
 Now you have a pattern wich port is which device. If you know port (you can get from hostname or serial, etc).
