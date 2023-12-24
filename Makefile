@@ -26,7 +26,7 @@ CLNT_CERT_SHELL_SOCK := $(CLNT_SHELL_SOCK)/certs
 
 
 # Targets
-.PHONY: server client tag help
+.PHONY: server client help
 
 server:
 	# Install requirement tool.
@@ -59,9 +59,6 @@ client:
 	
 	
 
-tag:
-	$(DOCKER_TAG) $(IMAGE_NAME):$(VERSION) $(IMAGE_NAME):latest
-
 clean:
 	rm -rf $(EXEC_SHELL_SOCK)
 	rm -rf $(ROOT_SHELL_SOCK)
@@ -70,11 +67,14 @@ clean:
 
 help:
 	@echo "Available targets:"
-	@echo "  build:     Generate certificates and build the Docker image with the specified version."
-	@echo "  tag:       Tag the built image with 'latest'."
-	@echo "  help:      /* Build project:            make build"
-	@echo "             /* Tag as latest (optional): make tag"
-	@echo "             /* Docker network is not created by default. You can create by youself. Check compose file"
+	@echo "  server:       Installs server software"
+	@echo "  client:       Install agent on IoT device"
+	@echo "  help:      /* Build server:            make server"
+	@echo "  help:      /* Build client:            make client"
+	@echo "             /* 1. generate certificates and sign with CA"
+	@echo "             /* 2. Copy key, public PEM, CA PEM chain to /etc/shell_sock_server/server|client/certs folder"
+	@echo "             /* 3. Configure keys absolute path and other parameters in /etc/shell_sock/server/config/server.conf|client.conf"
+	@echo "             /* 4. Start software systemtl start shell_sock_server.service or systemtl start shell_sock_client.service "
 
 # Default target
 .DEFAULT_GOAL := help
