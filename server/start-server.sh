@@ -56,7 +56,7 @@ while test $# -gt 0
                   [ $# = 0 ] && error "No private key specified"
                   export KEY="$1";
                   shift;;
-             (-c|--cert)
+              (-c|--cert)
                   shift
                   [ $# = 0 ] && error "No public key specified"
                   export CERT="$1"
