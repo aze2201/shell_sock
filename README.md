@@ -164,10 +164,14 @@ Now you have a pattern wich port is which device. If you know port (you can get 
 Use that port to connect your device.
 
 ```
-ssh -t root@proxy "nc -l -s 127.0.0.1 -p 4446; pkill -f 'nc -l -s 127.0.0.1 -p 4446'",pty,raw,echo=0
+$ ssh -t root@proxy "nc -l -s 127.0.0.1 -p 4446; pkill -f 'nc -l -s 127.0.0.1 -p 4446'",pty,raw,echo=0
 ```
 
-### Example:
+# Buy ne a coffe if usefull. So, I can add more fetures
+[buymeacoffee](https://www.buymeacoffee.com/2kfAp0elyz)
+
+
+### Examples:
 Proxy Server
 ```
 systemctl status  shell_sock_server.service 
