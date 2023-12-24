@@ -13,7 +13,7 @@ Client: `socat` and `make` <br>
 
 Server: `socat`, `nc` and `make`
 
-### installing Server (proxy)
+### Installing Server (proxy)
 ```
 apt-get install socat nc make
 git clone https://github.com/aze2201/shell_sock.git`
