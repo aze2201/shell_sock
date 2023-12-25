@@ -82,7 +82,7 @@ $([ ! -z $KEY ] && [ ! -z $CERT ] && [ ! -z $CA_CERT ] && [ ! -z $PORT ]) && no_
 echo "SERVER START 0.0.0.0:$PORT"
 socat openssl-listen:$PORT,fork,cert=$CERT,key=$KEY,cafile=$CA_CERT,verify=4 'system:
 {
-    # read inial message as port
+        # read inial message as port
 	read port
 	# Check if input is a number between 1024 and 65535
 	if echo "$port" | grep -Eq "^[1-9][0-9]{3,4}$" ; then
