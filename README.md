@@ -165,7 +165,7 @@ Now you have a pattern wich port is which device. If you know port (you can get 
 Use that port to connect your device.
 
 ```
-$ ssh -t root@proxy "nc -l -s 127.0.0.1 -p 4446; pkill -f 'nc -l -s 127.0.0.1 -p 4446'",pty,raw,echo=0
+$ ssh -t root@proxy "socat tcp-listen:4446 -",raw,echo=0
 ```
 # My contacts
 [Linkedin](https://www.linkedin.com/in/fariz-muradov-b100a268/)
