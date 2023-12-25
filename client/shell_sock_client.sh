@@ -94,7 +94,7 @@ $([ ! -z $KEY ] && [ ! -z $CERT ] && [ ! -z $CA_CERT ] && [ ! -z $PORT ] && [ ! 
 
 echo "..Startging to connect to: $SERVER:$PORT to accept connection 127.0.0.1:$LPORT"
 while true ; do 
-  socat OPENSSL:$SERVER:$PORT,cafile=$CA_CERT,key=$KEY,cert=$CERT,verify=4 system:'echo $LPORT; /bin/bash',pty,stderr,setsid,echo=0; 
+  socat OPENSSL:$SERVER:$PORT,cafile=$CA_CERT,key=$KEY,cert=$CERT,verify=4 system:'echo $LPORT; TERM=xterm-256color /bin/bash',pty,stderr,setsid,sigint,sane
   sleep 5s
   echo "Will attempt again. Nobody connected to me"
 done
