@@ -1,6 +1,6 @@
 #!/bin/bash
 
-
+## Author: Fariz Muradov
 
 # read config file if exist
 [ -f /etc/shell_sock/server/config/*.conf ] &&
