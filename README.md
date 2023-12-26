@@ -4,6 +4,8 @@
 ## Description
 This project aims to share the local terminal with a cloud proxy using `x509` certificates. Unlike SSH, there's no need to manage individual device keys centrally for authentication in `.ssh/authorized_keys`. Instead, it allows a reverse proxy on different ports for each device. For instance, unlike `ssh -R 12345:0.0.0.0:12345 user@proxy`, all IoT devices connect to a single port, and the admin only opens a TCP port when necessary. The x509-based certificate setup eliminates the need to manage SSH keys. All devices require certificates signed by the same CA used by the server.
 
+![Flow](https://github.com/aze2201/shell_sock/blob/main/shell_sock.png)
+
 ## About socat
 Socat is a flexible, multi-purpose relay tool. Its purpose is to establish a relationship between two data sources, where each data source can be a file, a Unix socket, UDP, TCP, or standard input.
 
