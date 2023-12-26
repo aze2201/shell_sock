@@ -173,7 +173,7 @@ $ ssh -t root@proxy "socat tcp-listen:4446 -",raw,echo=0
 [BUG](https://github.com/aze2201/shell_sock/issues)
 
 # My contacts
-[BUG](https://github.com/aze2201/shell_sock/issues)
+[Linkedin](https://www.linkedin.com/in/fariz-muradov-b100a268/)
 
 # Buy ne a coffe if usefull. So, I can add more fetures
 [buymeacoffee](https://www.buymeacoffee.com/2kfAp0elyz)
