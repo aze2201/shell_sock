@@ -158,7 +158,7 @@ Get CA public key chain
   {-C|--ca-cert    }  CA file      -- Set CA public key    or   root@shell_sock:~# export CA_CERT=
   {-p|--port       }  PORT         -- Set listen port      or   root@shell_sock:~# export PORT=
   {-s|--server     }  SERVER       -- Set server ip|domain or   root@shell_sock:~# export SERVER=
-  {-l|--local-port }  SERVER       -- Set server ip|domain or   root@shell_sock:~# export LPORT=
+  {-l|--local-port }  LPORT        -- Set port in remote   or   root@shell_sock:~# export LPORT=
 ```
 
 
@@ -169,15 +169,15 @@ Use that port to connect your device.
 ```
 $ ssh -t root@proxy "socat tcp-listen:4446 -",raw,echo=0
 ```
-# BUT report
-[buymeacoffee](https://www.buymeacoffee.com/2kfAp0elyz)
+# BUG report
+[BUG](https://github.com/aze2201/shell_sock/issues)
 
 # My contacts
 [BUG](https://github.com/aze2201/shell_sock/issues)
 
 # Buy ne a coffe if usefull. So, I can add more fetures
-
 [buymeacoffee](https://www.buymeacoffee.com/2kfAp0elyz)
+
 
 
 ### Examples:
