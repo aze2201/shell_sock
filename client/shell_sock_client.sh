@@ -41,7 +41,7 @@ help()
     echo "  {-C|--ca-cert    }  CA file      -- Set CA public key    or   root@shell_sock:~# export CA_CERT="
     echo "  {-p|--port       }  PORT         -- Set listen port      or   root@shell_sock:~# export PORT="
     echo "  {-s|--server     }  SERVER       -- Set server ip|domain or   root@shell_sock:~# export SERVER="
-    echo "  {-l|--local-port }  SERVER       -- Set server ip|domain or   root@shell_sock:~# export LPORT="
+    echo "  {-l|--local-port }  LPORT        -- Set port in remote   or   root@shell_sock:~# export LPORT="
     echo ""               
     exit 0
 }
