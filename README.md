@@ -169,8 +169,11 @@ Use that port to connect your device.
 ```
 $ ssh -t root@proxy "socat tcp-listen:4446 -",raw,echo=0
 ```
+# BUT report
+[buymeacoffee](https://www.buymeacoffee.com/2kfAp0elyz)
+
 # My contacts
-[Linkedin](https://www.linkedin.com/in/fariz-muradov-b100a268/)
+[BUG](https://github.com/aze2201/shell_sock/issues)
 
 # Buy ne a coffe if usefull. So, I can add more fetures
 
