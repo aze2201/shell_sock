@@ -87,8 +87,8 @@ socat openssl-listen:$PORT,fork,cert=$CERT,key=$KEY,cafile=$CA_CERT,verify=4 'sy
     read port
     export port
     port=$(echo ${port}| tr "\r" " "| sed "s/ //" )
-    # start listen connection
     
+    # start listen connection
     while true;do
      lsof -i :$port > /dev/null
      if [ $? -eq 0 ]; then
