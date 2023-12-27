@@ -80,23 +80,21 @@ $([ ! -z $KEY ] && [ ! -z $CERT ] && [ ! -z $CA_CERT ] && [ ! -z $PORT ]) && no_
 [[ "$no_args" -ne "1" ]] && { echo "";echo "ERROR: Some of arguments are not specified !! "; help; exit 1; }
 
 echo "SERVER START 0.0.0.0:$PORT"
+
 socat openssl-listen:$PORT,fork,cert=$CERT,key=$KEY,cafile=$CA_CERT,verify=4 'system:
 {
     # read inial message as port
     read port
     export port
-    # make it raw
     port=$(echo ${port}| tr "\r" " "| sed "s/ //" )
+    # start listen connection
     
-    # open session
     while true;do
-      # check port are open
-      lsof -i :$port > /dev/null
-      if [ $? -eq 0 ]; then
-         # if client open port then forward to that
-         socat - TCP4:127.0.0.1:$port
-       fi
-      # wait and keep connection
-      sleep 2s
+     lsof -i :$port > /dev/null
+     if [ $? -eq 0 ]; then
+      socat - TCP4:127.0.0.1:$port
+      exit 0
+     fi
+     sleep 2s
     done
 }'
