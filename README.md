@@ -173,6 +173,9 @@ Use that port to connect your device.
 ```
 $ ssh -t root@proxy "socat tcp-listen:4446 -",raw,echo=0
 ```
+# ⛔ Limitation
+Currently, each device can hold one session at the time. Second cannot be establised to the same device. 
+
 # 🐞 BUG report
 [BUG](https://github.com/aze2201/shell_sock/issues)
 
