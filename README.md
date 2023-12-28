@@ -6,7 +6,9 @@ This project aims to share the local terminal with a cloud proxy using `x509` ce
 
 ![Flow](https://github.com/aze2201/shell_sock/blob/main/shell_sock.png)
 
+### Sequence Diagram
 
+<img src="https://github.com/aze2201/shell_sock/blob/main/shell_sock_diagram.png" width="800" height="450">
 
 ## About socat
 Socat is a flexible, multi-purpose relay tool. Its purpose is to establish a relationship between two data sources, where each data source can be a file, a Unix socket, UDP, TCP, or standard input.
@@ -226,7 +228,5 @@ systemctl status shell_sock_client
 Dec 24 20:58:33 IoTHost shell_sock_client.sh[14054]: Will attempt again…me
 ```
 
-### Sequence Diagram
 
-<img src="https://github.com/aze2201/shell_sock/blob/main/shell_sock_diagram.png" width="800" height="600">
 
