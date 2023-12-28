@@ -58,7 +58,7 @@ $ export KEY=/etc/shell_sock/server/certs/iot.key
 $ export CERT=/etc/shell_sock/server/certs/iot.crt
 $ export CA_CERT=/etc/shell_sock/server/certs/ca-cert.crt
 $ export PORT=123457
-$ ./shell_sock_client.sh
+$ ./shell_sock_server.sh
 ```
 
 or
@@ -111,8 +111,8 @@ Loading configuration
 Configurations are loaded
 
 To share accept terminal PTY requires certificates wich is signed by any CA
-Generate private key: root@shell_sock:~\# openssl genrsa -out certs/server.key 4096
-Generate CSR key:     root@shell_sock:~\# openssl req -new -key certs/server.key -out certs/server.csr
+Generate private key: root@shell_sock:~ # openssl genrsa -out certs/server.key 4096
+Generate CSR key:     root@shell_sock:~ # openssl req -new -key certs/server.key -out certs/server.csr
 Send CSR file to CA and obtain signed PEM or CRT file and store certs folder (x509)
 Get CA public key chain
 
@@ -150,8 +150,8 @@ Loading configuration
 Configurations are loaded
 
 To share terminal to server requires certificates wich is signed by any CA
-Generate private key: root@shell_sock:~\# openssl genrsa -out certs/server.key 4096
-Generate CSR key:     root@shell_sock:~\# openssl req -new -key certs/server.key -out certs/server.csr
+Generate private key: root@shell_sock:~ # openssl genrsa -out certs/server.key 4096
+Generate CSR key:     root@shell_sock:~ # openssl req -new -key certs/server.key -out certs/server.csr
 Send CSR file to CA and obtain signed PEM or CRT file and store certs folder (x509)
 Get CA public key chain
 
